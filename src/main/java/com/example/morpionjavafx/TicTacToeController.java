@@ -166,7 +166,6 @@ public class TicTacToeController {
         if (board[0][2].getPlayer() == player && board[1][1].getPlayer() == player
                 && board[2][0].getPlayer() == player) {
             highlightWinningCells(board[0][2], board[1][1], board[2][0]);
-            System.out.println("HERE");
             addScore();
             updateScoreLabels();
             return true;
