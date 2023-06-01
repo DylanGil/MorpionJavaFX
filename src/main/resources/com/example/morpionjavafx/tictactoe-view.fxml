@@ -5,8 +5,16 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.morpionjavafx.TicTacToeController">
+    <top>
+        <VBox alignment="CENTER">
+<!--            <Label fx:id="scoreLabel" text="X:0 points       O: 0 points" />-->
+            <Label fx:id="scoreLabelX" text="Player X Score: 0" />
+            <Label fx:id="scoreLabelO" text="Player O Score: 0" />
+        </VBox>
+    </top>
     <center>
         <GridPane fx:id="pane"/>
     </center>

@@ -10,7 +10,11 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 
 public class TicTacToeController {
+    public Label scoreLabelX;
+    public Label scoreLabelO;
     private char currentPlayer = 'X';
+    private int xScore = 0;
+    private int oScore = 0;
     private final Cell[][] board = new Cell[3][3];
 
     @FXML
@@ -50,6 +54,12 @@ public class TicTacToeController {
         // Reset the status label
         statusLabel.setText(currentPlayer + "'s turn to play");
     }
+
+    private void updateScoreLabels() {
+        scoreLabelX.setText("Player X Score: " + xScore);
+        scoreLabelO.setText("Player O Score: " + oScore);
+    }
+
     public class Cell extends Pane {
         private char player = ' ';
 
@@ -129,6 +139,8 @@ public class TicTacToeController {
             if (board[i][0].getPlayer() == player && board[i][1].getPlayer() == player
                     && board[i][2].getPlayer() == player) {
                 highlightWinningCells(board[i][0], board[i][1], board[i][2]);
+                addScore();
+                updateScoreLabels();
                 return true;
             }
         }
@@ -137,6 +149,8 @@ public class TicTacToeController {
             if (board[0][i].getPlayer() == player && board[1][i].getPlayer() == player
                     && board[2][i].getPlayer() == player) {
                 highlightWinningCells(board[0][i], board[1][i], board[2][i]);
+                addScore();
+                updateScoreLabels();
                 return true;
             }
         }
@@ -144,18 +158,30 @@ public class TicTacToeController {
         if (board[0][0].getPlayer() == player && board[1][1].getPlayer() == player
                 && board[2][2].getPlayer() == player) {
             highlightWinningCells(board[0][0], board[1][1], board[2][2]);
+            addScore();
+            updateScoreLabels();
             return true;
         }
 
         if (board[0][2].getPlayer() == player && board[1][1].getPlayer() == player
                 && board[2][0].getPlayer() == player) {
             highlightWinningCells(board[0][2], board[1][1], board[2][0]);
+            System.out.println("HERE");
+            addScore();
+            updateScoreLabels();
             return true;
         }
 
         return false;
     }
 
+    private void addScore() {
+        if (currentPlayer == 'X') {
+            xScore++;
+        } else {
+            oScore++;
+        }
+    }
     private void highlightWinningCells(Cell... cells) {
         for (Cell cell : cells) {
             cell.setStyle("-fx-background-color: #00ff19");

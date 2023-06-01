@@ -11,7 +11,7 @@ public class TicTacToeApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("tictactoe-view.fxml"));
-        Scene scene = new Scene(loader.load(), 500, 510);
+        Scene scene = new Scene(loader.load(), 540, 600);
         stage.setTitle("Tic Tac Toe by Pierre Marquet & Dylan Gil Amaro");
         stage.setScene(scene);
         stage.show();
