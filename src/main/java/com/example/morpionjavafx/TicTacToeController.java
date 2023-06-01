@@ -47,6 +47,7 @@ public class TicTacToeController {
                     currentPlayer = ' ';
                 } else if (isBoardFull()) {
                     statusLabel.setText("Draw! The game is over");
+                    pane.setStyle("-fx-background-color: red");
                     currentPlayer = ' ';
                 } else {
                     currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
@@ -106,6 +107,7 @@ public class TicTacToeController {
         for (int i = 0; i < 3; i++) {
             if (board[i][0].getPlayer() == player && board[i][1].getPlayer() == player
                     && board[i][2].getPlayer() == player) {
+                highlightWinningCells(board[i][0], board[i][1], board[i][2]);
                 return true;
             }
         }
@@ -113,20 +115,29 @@ public class TicTacToeController {
         for (int i = 0; i < 3; i++) {
             if (board[0][i].getPlayer() == player && board[1][i].getPlayer() == player
                     && board[2][i].getPlayer() == player) {
+                highlightWinningCells(board[0][i], board[1][i], board[2][i]);
                 return true;
             }
         }
 
         if (board[0][0].getPlayer() == player && board[1][1].getPlayer() == player
                 && board[2][2].getPlayer() == player) {
+            highlightWinningCells(board[0][0], board[1][1], board[2][2]);
             return true;
         }
 
         if (board[0][2].getPlayer() == player && board[1][1].getPlayer() == player
                 && board[2][0].getPlayer() == player) {
+            highlightWinningCells(board[0][2], board[1][1], board[2][0]);
             return true;
         }
 
         return false;
+    }
+
+    private void highlightWinningCells(Cell... cells) {
+        for (Cell cell : cells) {
+            cell.setStyle("-fx-background-color: #00ff19");
+        }
     }
 }
