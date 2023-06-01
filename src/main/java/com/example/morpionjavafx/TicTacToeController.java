@@ -1,6 +1,7 @@
 package com.example.morpionjavafx;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -16,9 +17,13 @@ public class TicTacToeController {
     private GridPane pane;
 
     @FXML
+    private Button resetButton;
+
+    @FXML
     private Label statusLabel;
 
     public void initialize() {
+        pane.setStyle("-fx-background-color: white");
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 board[i][j] = new Cell();
@@ -27,8 +32,24 @@ public class TicTacToeController {
         }
 
         statusLabel.setText("X's turn to play");
+        resetButton.setOnAction(e -> resetGame());
     }
 
+    @FXML
+    private void resetGame() {
+        currentPlayer = currentPlayer == 'X' ? 'O' : 'X';
+        pane.setStyle("-fx-background-color: white");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j].setPlayer(' ');
+                board[i][j].getChildren().clear();
+                board[i][j].setStyle("-fx-border-color: black");
+            }
+        }
+
+        // Reset the status label
+        statusLabel.setText(currentPlayer + "'s turn to play");
+    }
     public class Cell extends Pane {
         private char player = ' ';
 
