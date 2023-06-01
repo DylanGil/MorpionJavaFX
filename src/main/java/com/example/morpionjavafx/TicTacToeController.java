@@ -64,10 +64,10 @@ public class TicTacToeController {
                 setPlayer(currentPlayer);
 
                 if (hasWon(currentPlayer)) {
-                    statusLabel.setText(currentPlayer + " won! The game is over");
+                    statusLabel.setText(currentPlayer + " won!");
                     currentPlayer = ' ';
                 } else if (isBoardFull()) {
-                    statusLabel.setText("Draw! The game is over");
+                    statusLabel.setText("Draw!");
                     pane.setStyle("-fx-background-color: red");
                     currentPlayer = ' ';
                 } else {
