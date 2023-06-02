@@ -24,3 +24,6 @@ School project: This is a simple implementation of the Tic-Tac-Toe game using Ja
 - Supports two human players.
 - Displays a message when a player wins or the game ends in a tie.
 - Restart option to play again.
+
+## Contributors
+[SokouPM](https://github.com/SokouPM) & [DylanGil](https://github.com/DylanGil)
